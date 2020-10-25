@@ -48,4 +48,33 @@
 	</div>
 </section>
 
-投稿写真の情報は後ほど実装します。
+
+<section class="section">
+	<div class="container">
+		<div class="columns is-multiline">
+			<%= @user.babies.each do |baby| %>
+				<div class="column is-4">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-4by3">
+								<%= attachment_image_tag baby, :image %>
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media">
+								<div class="media-content">
+									<%= link_to "詳細", baby_path(baby), class: "panel-block" %>
+									<%= link_to "編集", edit_baby_path(baby), class: "panel-block" %>
+									<%= link_to "削除", baby_path(baby), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" %>
+								</div>
+							</div>
+							<div class="content">
+								<time><%= baby.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</section>
