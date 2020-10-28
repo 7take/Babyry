@@ -52,20 +52,39 @@
 <section class="section">
 	<div class="container">
 		<div class="columns is-multiline">
-			<%= @user.babies.each do |baby| %>
+			<% @user.babies.each do |baby| %>
 				<div class="column is-4">
 					<div class="card">
 						<div class="card-image">
 							<figure class="image is-4by3">
-								<%= attachment_image_tag baby, :image %>
+								<%= link_to baby_path(baby) do %>
+									<%= attachment_image_tag baby, :image, fallback: "no-image.png" %>
+								<% end %>
 							</figure>
 						</div>
 						<div class="card-content">
 							<div class="media">
 								<div class="media-content">
-									<%= link_to "詳細", baby_path(baby), class: "panel-block" %>
-									<%= link_to "編集", edit_baby_path(baby), class: "panel-block" %>
-									<%= link_to "削除", baby_path(baby), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" %>
+									<%= link_to baby_path(baby), class: "panel-block" do %>
+										<span class="panel-icon">
+											<i class="fas fa-baby" area-hidden="true"></i>
+										</span>
+										この投稿を見る
+									<% end %>
+									<% if @user.id == current_user.id %>
+										<%= link_to edit_baby_path(baby), class: "panel-block" do %>
+											<span class="panel-icon">
+												<i class="fas fa-edit"></i>
+											</span>
+											この投稿を編集する
+										<% end %>
+										<%= link_to baby_path(baby), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+											<span class="panel-icon">
+													<i class="fas fa-trash"></i>
+											</span>
+											この投稿を削除する
+										<% end %>
+									<% end %>
 								</div>
 							</div>
 							<div class="content">

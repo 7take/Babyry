@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users
   resources :babies
+  get "/about" => "home#about"
 end

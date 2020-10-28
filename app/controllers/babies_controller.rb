@@ -1,4 +1,5 @@
 class BabiesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
     @babies = Baby.all
   end
@@ -14,18 +15,27 @@ class BabiesController < ApplicationController
   def create
   	@baby = Baby.new(baby_params)
   	@baby.user_id = current_user.id
-  	@baby.save
-  	redirect_to baby_path(@baby)
+  	if @baby.save
+      redirect_to baby_path(@baby), notice: '投稿に成功しました。'
+    else
+      render :new
+    end
   end
 
   def edit
     @baby = Baby.find(params[:id])
+    if @baby.user != current_user
+      redirect_to babies_path, alert: '不正なアクセスです。'
+    end
   end
 
   def update
     @baby = Baby.find(params[:id])
-    @baby.update(baby_params)
-    redirect_to baby_path(@baby)
+    if @baby.update(baby_params)
+      redirect_to baby_path(@baby), notice: '投稿を更新しました。'
+    else
+      render :edit
+    end
   end
 
   def destroy
