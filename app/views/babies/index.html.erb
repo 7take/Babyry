@@ -34,9 +34,25 @@
 									<div class="title"><%= link_to baby.user.username, user_path(baby.user.id) %></div>
 								</div>
 							</div>
-							<div class="content">
-								<time><%= baby.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+							<% if current_user %>
+							<div class="media">
+								<div class="media-content">いいね
+									<% if current_user.already_favorited?(baby) %>
+										<%= link_to baby_favorites_path(baby), method: :delete do %>
+										<i class="fas fa-heart"></i>
+									<% end %>
+									<% else %>
+										<%= link_to baby_favorites_path(baby), method: :post do %>
+										<i class="far fa-heart"></i>
+										<% end %>
+									<% end %>
+									<%= baby.favorites.count %>
+								</div>
+								<div class="media-right">
+									<time><%= baby.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+								</div>
 							</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
