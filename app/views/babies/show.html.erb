@@ -2,15 +2,15 @@
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
-				詳細画面
+				投稿詳細
 			</h1>
 		</div>
 	</div>
 </section>
 
 <section class="section">
-	<div class="continer">
-		<div class="column is-centered">
+	<div class="container">
+		<div class="columns is-centered">
 			<div class="column is-7">
 				<div class="card">
 					<div class="card-image">
@@ -74,33 +74,40 @@
 					<%= @baby.user.username %>さんのページへ
 					<% end %>
 				</article>
+
+
+
+				<article class="panel is-link">
+					<p class="panel-heading">
+						コメント一覧
+					</p>
+					<% @comments.each do |comment| %>
+						<div class="panel-block">
+							<p class="control">
+								<%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
+									<%= attachment_image_tag comment.user, :profile_image, fallback: "no-image.png", size: "50x50" %>
+									<%= comment.user.username %>
+								<% end %>
+							<p class="control">
+							<%= comment.comment %>
+							<% if current_user == comment.user %>
+								<%= link_to '削除', baby_comment_path(@baby, comment), class: 'button is-danger', method: :delete %>
+							<% end %>
+						</p>
+					</div>
+				<% end %>
+
+				<div class="comment-form">
+					<%= form_for [@baby, @comment] do |f| %>
+						<%= f.text_area :comment, size: "55x7" %>
+						<%= f.submit '送信', class: "button is-primary" %>
+					<% end %>
+				</div>
+				</article>
+
+
+
 			</div>
 		</div>
 	</div>
 </section>
-
-
-<h2>コメント一覧</h2>
-<table>
-	<% @comments.each do |comment| %>
-		<tr>
-			<td class="show-comment">
-				<%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
-					<%= attachment_image_tag comment.user, :profile_image, fallback: "no-image.png", size: "50x50" %><br>
-					<%= comment.user.name %>
-				<% end %>
-			</td>
-			<td class="show-comment"><%= comment.comment %></td>
-			<% if current_user == comment.user %>
-				<%= link_to 'Destroy', baby_comment_path(@baby, comment), class: 'btn-sm btn-danger', method: :delete %></td>
-			<% end %>
-		</tr>
-	<% end %>
-</table>
-
-<div class="comment-form">
-	<%= form_for [@baby, @comment] do |f| %>
-		<%= f.text_area :comment, size: "90x5" %>
-		<%= f.submit '送信', class: "btn-sm btn-primary" %>
-	<% end %>
-</div>

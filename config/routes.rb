@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :babies do
   	resource :favorites, only: [:create, :destroy]
+  	resources :comments, only: [:create, :destroy]
   end
   get "/about" => "home#about"
 end
