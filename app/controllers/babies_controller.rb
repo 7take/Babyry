@@ -6,6 +6,8 @@ class BabiesController < ApplicationController
 
   def show
   	@baby = Baby.find(params[:id])
+    @comment = Comment.new
+    @comments = @baby.comments
   end
 
   def new
