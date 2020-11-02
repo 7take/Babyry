@@ -26,10 +26,14 @@
 			<div class="column is-6">
 				<%= form_for @baby do |f| %>
 
-				<div class="field">
+				<div class="baby-img">
 					<%= f.label :image, "写真", class: "label" %>
-					<%= f.attachment_field :image, class: "input" %>
+					<%= image_tag 'no-image.png', id: "file-preview", style: "width:100%; "%>
 				</div>
+
+				<div class="baby-new-form">
+			        <%= f.attachment_field :image, id: "file_btn" %>
+			    </div><br>
 
 				<div class="field">
 					<%= f.label :title, "タイトル", class: "label" %>
@@ -38,7 +42,7 @@
 
 				<div class="field">
 					<%= f.label :body, "出来事", class: "label" %>
-					<%= f.text_area :body, class: "input" %>
+					<%= f.text_area :body, class: "textarea" %>
 				</div>
 
 				<%= f.submit '投稿', class: "button is-success" %>
@@ -47,3 +51,21 @@
 		</div>
 	</div>
 </section>
+
+
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#file-preview').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $('#file_btn').change(function(){
+   readURL(this);
+ });
+});
+</script>
