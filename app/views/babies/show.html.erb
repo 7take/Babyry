@@ -90,18 +90,20 @@
 								<% end %>
 							<p class="control">
 							<%= comment.comment %>
+							</p>
 							<% if current_user == comment.user %>
 								<%= link_to '削除', baby_comment_path(@baby, comment), class: 'button is-danger', method: :delete %>
 							<% end %>
-						</p>
-					</div>
-				<% end %>
-
-				<div class="comment-form">
-					<%= form_for [@baby, @comment] do |f| %>
-						<%= f.text_area :comment, size: "55x7" %>
-						<%= f.submit '送信', class: "button is-primary" %>
+						</div>
 					<% end %>
+
+				<div class="media">
+					<div class="media-right">
+						<%= form_for [@baby, @comment] do |f| %>
+							<%= f.text_area :comment, size: "55x7" %>
+							<%= f.submit '送信', class: "button is-primary" %>
+						<% end %>
+					</div>
 				</div>
 				</article>
 
@@ -111,3 +113,4 @@
 		</div>
 	</div>
 </section>
+
