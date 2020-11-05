@@ -2,7 +2,7 @@
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
-				Follower Users
+				フォローされてるユーザー
 			</h1>
 		</div>
 	</div>
@@ -13,7 +13,7 @@
   <%#= render '/users/index', users: @users %>
 
 
-  	<section class="section">
+<section class="section">
 	<div class="container">
 		<div class="columns is-multiline">
 			<% @users.each do |user| %>
@@ -34,12 +34,15 @@
 									<div class="title"><%= link_to user.username, user_path(user) %></div>
 								</div>
 							</div>
-							<div class="content">
-								投稿数：<%= user.babies.count %>
-							</div>
-							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</section>
 
 
 <% else %>
-  <p>ユーザーはいません</p>
+  <p>まだユーザーはいません</p>
 <% end %>

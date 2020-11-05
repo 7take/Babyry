@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   	resources :comments, only: [:create, :destroy]
   end
   get "/about" => "home#about"
+  get "/follow_index" => "babies#follow_index"
 end

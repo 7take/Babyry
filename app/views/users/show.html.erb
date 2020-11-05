@@ -2,7 +2,7 @@
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
-				マイページ
+				<%= @user.username %> さんのマイページ
 			</h1>
 		</div>
 	</div>
@@ -43,7 +43,7 @@
 							</tr>
 						</table>
 
-<!-- フォロー機能テスト --><table class="table is-fullwidth">
+<!-- フォロー機能 --><table class="table is-fullwidth">
 							<tr>
 								<td>フォロー数</td>
 								<td><%= link_to @user.following_users.count, user_follows_path(@user) %></td>
@@ -66,9 +66,8 @@
 						    <%= link_to '',edit_user_path(@user),class: "btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
 						  </div>
 						<% end %>
+<!-- フォロー機能 -->
 
-
-<!-- フォロー機能テスト -->
 					</div>
 				</div>
 			</div>

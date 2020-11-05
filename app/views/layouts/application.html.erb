@@ -3,11 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="home.scss">
+
+<!-- スライドショーテスト -->
+      <link rel="stylesheet" href="stylesheets/skippr.css">
+      <link rel="stylesheet" href="stylesheets/home.scss">
+<!--  -->
+
     <title>Babyry</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" href="css/style.scss" media="all" />
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" href="home.scss">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -31,7 +39,7 @@
     <nav class="navbar is-warning">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-4" style="font-family: cursive;">Babyry</h1>
+          <h1 class="title is-4" style="font-family: 'Itim', cursive;">Babyry</h1>
         <%end%>
 
 <!-- テスト -->
@@ -63,27 +71,23 @@
       <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
-            <%= link_to "投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
             <%= link_to "新規投稿", new_baby_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
           </div>
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="field is-grouped">
-                  <p class="control">
-                    <%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                  </p>
-                  <p class="control">
-                    <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                  </p>
-                  </p>
-                  <p class="control">
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div class="navbar-item">
+            <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "投稿一覧", follow_index_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "すべてのユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "すべての投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+          </div>
         </div>
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
@@ -118,5 +122,25 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
+
+
+<!-- スライドショーテスト -->
+
+
+  <div class="container">
+    <div class="theTarget">
+      <div style="background-image: url(img/test1.jpg)"></div>
+      <div style="background-image: url(img/test2.jpg)"></div>
+      <div style="background-image: url(img/test3.jpg)"></div>
+      <div style="background-image: url(img/test4.jpg)"></div>
+      <div style="background-image: url(img/test5.jpg)"></div>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/skippr.min.js"></script>
+  <script src="js/script.js"></script>
+<!--  -->
+ 
   </body>
 </html>

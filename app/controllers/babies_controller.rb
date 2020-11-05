@@ -4,6 +4,15 @@ class BabiesController < ApplicationController
     @babies = Baby.all
   end
 
+# テスト
+  def follow_index
+    @babies = Baby.all
+    @user = User.find(current_user.id)
+    @follow_users = @user.all_following
+    @babies = @babies.where(user_id: @follow_users)
+  end
+# テスト
+
   def show
   	@baby = Baby.find(params[:id])
     @comment = Comment.new
