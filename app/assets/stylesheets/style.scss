@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+
+@media (max-width: 600px) {
+  h1 {
+  color: #0bd;
+  }
+}
+
+
 /* ---------------------------- */
 /* --- ハンバーガーアイコン --- */
 /* ---------------------------- */
@@ -75,28 +83,32 @@
 }
 
 
+/* ------------------------ */
+/* ------ モバイル版 ------ */
+/* ------------------------ */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
 
+  .main-nav li {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
 
+  .main-nav li {
+    margin: 0 20px;
+  }
 
-
-
-
-
-
-
-
-// 大きな背景画像 //
-.big-bg {
-	background-size: cover;
-	background-potision: center top;
-	background-repeat: no-repeat;
+  .home-content {
+    margin-top: 20%;
+  }
 }
 
-#home {
-	background-image: url(../images/home_baby.ipg);
-	min-height: 100vh;
-}
 
-#home .page-title {
-	text-transform: none;
-}
+
+
+
+
+
+

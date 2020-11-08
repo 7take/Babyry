@@ -2,16 +2,14 @@
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
-				フォローしてるユーザー
+				フォローしているユーザー
 			</h1>
 		</div>
 	</div>
 </section>
 
-
 <% if @users.count > 0 %>
   <%#= render '/users/index', users: @users %>
-
 
 <section class="section">
 	<div class="container">
@@ -43,10 +41,9 @@
 </section>
 
 
-
 <% else %>
 <center>
-  <p>まだユーザーはいません</p>
+  <h1>フォローしているユーザーはまだいません。</h1>
 </center>
 <% end %>
 

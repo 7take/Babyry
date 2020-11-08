@@ -11,11 +11,11 @@
 <% if @baby.errors.any? %>
 	<div class="notification is-danger">
 		<h2><%= pluralize(@baby.errors.count, "error") %>　『エラーが出ています』</h2>
-			<ul>
-				<% @baby.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
+		<ul>
+			<% @baby.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
 	</div>
 <% end %>
 
@@ -52,7 +52,7 @@
 	</div>
 </section>
 
-
+<!-- 画像プレビュー -->
 <script type="text/javascript">
 $(function() {
  function readURL(input) {
@@ -69,3 +69,4 @@ $(function() {
  });
 });
 </script>
+<!-- 画像プレビュー -->

@@ -38,17 +38,9 @@
 							</div>
 							<% if current_user %>
 							<div class="media">
-								<div class="media-content">いいね
-									<% if current_user.already_favorited?(baby) %>
-										<%= link_to baby_favorites_path(baby), method: :delete do %>
-										<i class="fas fa-heart"></i>
-									<% end %>
-									<% else %>
-										<%= link_to baby_favorites_path(baby), method: :post do %>
-										<i class="far fa-heart"></i>
-										<% end %>
-									<% end %>
-									<%= baby.favorites.count %>
+								<div class="media-content">
+									<i class="far fa-heart"></i> いいね
+									<%= baby.favorites.count %> 件
 								</div>
 								<div class="media-right">
 									<time><%= baby.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
@@ -60,11 +52,10 @@
 				</div>
 			<% end %>
 
-
-
 			<% else %>
-  <p>フォローしているユーザーはいません</p>
-<% end %>
+				<p>フォローしているユーザーはいません</p>
+			<% end %>
+
 		</div>
 	</div>
 </section>
