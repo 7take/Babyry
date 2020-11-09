@@ -80,16 +80,19 @@
               <div class="navbar-item">
                 <%= link_to "投稿一覧", follow_index_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
               </div>
-              <div class="navbar-item">
-                <%= link_to "すべてのユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "すべての投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-              </div>
-            </div>
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                      <%= link_to "すべてのユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                    </p>
+                    <p class="control">
+                      <%= link_to "すべての投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                    </p>
+                    <p class="control">
+                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                    </p>
+                  </div>
           <% else %>
             <div id="navbarExampleTransparentExample" class="navbar-menu">
               <div class="navbar-item">
