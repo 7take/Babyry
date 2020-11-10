@@ -1,15 +1,17 @@
 <div class="media-right">
 	<p class="title is-4"></p>
 
-		<p class="title is-4">いいね
-			<% if current_user.already_favorited?(baby) %>
-				<%= link_to baby_favorites_path(baby), method: :delete,remote: true do %>
-					<i class="fas fa-heart"></i>
-				<% end %>
-			<% else %>
-				<%= link_to baby_favorites_path(baby),method: :post,remote: true do %>
-					<i class="far fa-heart"></i>
-				<% end %>
+
+	<p class="title is-4">いいね
+		<% if current_user.already_favorited?(baby) %>
+			<%= link_to baby_favorites_path(baby), method: :delete,remote: true do %>
+				<i class="fas fa-heart"></i>
 			<% end %>
-		<%= baby.favorites.count %></p>
-	</div>
+		<% else %>
+			<%= link_to baby_favorites_path(baby),method: :post,remote: true do %>
+				<i class="far fa-heart"></i>
+			<% end %>
+		<% end %>
+		<%= baby.favorites.count %>
+	</p>
+</div>

@@ -2,13 +2,15 @@
 	<div class="hero-body">
 		<div class="container">
 			<h1 class="title">
-				投稿一覧
+				フォロー投稿一覧
 			</h1>
 		</div>
 	</div>
 </section>
 
+
 <% if @follow_users.count > 0 %>
+
 
 <section class="section">
 	<div class="container">
@@ -52,11 +54,13 @@
 				</div>
 			<% end %>
 
+
 			<% else %>
 				<center>
 					<h1>フォローしているユーザーはまだいません。</h1>
 				</center>
 			<% end %>
+
 
 		</div>
 	</div>

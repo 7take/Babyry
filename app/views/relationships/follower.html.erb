@@ -9,8 +9,6 @@
 </section>
 
 <% if @users.count > 0 %>
-  <%#= render '/users/index', users: @users %>
-
 <section class="section">
 	<div class="container">
 		<div class="columns is-multiline">
@@ -43,8 +41,6 @@
 
 <% else %>
 <center>
-  <h1>フォローしているユーザーはまだいません。</h1>
+	<h1>フォローしているユーザーはまだいません。</h1>
 </center>
 <% end %>
-
-
