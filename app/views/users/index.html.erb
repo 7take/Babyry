@@ -30,17 +30,16 @@
 									<div class="title"><%= link_to user.username, user_path(user) %></div>
 								</div>
 							</div>
-							<div class="content">
-								投稿数：<%= user.babies.count %>
-							</div>
-							<!-- フォロー機能 -->
+
 							<table class="table width">
 								<tr>
+									<td>投稿数：<%= user.babies.count %></td>
 									<td>フォロー数：<%= user.following_users.count %></td>
 								    <td>フォロワー数：<%= user.follower_users.count %></td>
 								</tr>
 							</table>
 
+							<!-- フォロー機能 -->
 							<% if current_user %>
 					        <center>
 					          <% if current_user != user %>

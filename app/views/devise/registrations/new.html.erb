@@ -8,15 +8,16 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="columns is-5">
+      <div class="column is-5">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :username, class: "label" %>
+          <%= f.label :ユーザーネーム, class: "label" %>
           <p class="control has-icons-left">
           <%= f.text_field :username, autofocus: true, autocomplete: "email" , :placeholder => "username", class: "input" %>
             <span class="icon is-small is-left">
@@ -26,7 +27,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :email, class: "label" %>
+          <%= f.label :メールアドレス, class: "label" %>
           <p class="control has-icons-left">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input"  %>
             <span class="icon is-small is-left">
@@ -36,9 +37,9 @@
         </div>
 
         <div class="field">
-          <%= f.label :password, class: "label" %>
+          <%= f.label :パスワード, class: "label" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>( <%= @minimum_password_length %> 文字以上入で力して下さい )</em>
           <% end %>
           <p class="control has-icons-left">
           <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input" %>
@@ -49,18 +50,19 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation, class: "label" %>
+          <%= f.label :パスワード確認, class: "label" %>
+          <em>( 確認のため、同じパスワードをもう一度入力してください )</em>
           <p class="control has-icons-left">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
           </p>
-        </div>
+        </div><br>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: "button is-success" %>
-        </div>
+          <%= f.submit "新規登録する", class: "button is-success" %>
+        </div><br>
         <%= render "devise/shared/links" %>
         <% end %>
 

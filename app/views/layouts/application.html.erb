@@ -1,152 +1,157 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-
-  <title>Babyry</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" href="css/style.scss" media="all" />
-      <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-
-  <body>
-    <% if flash[:notice] %>
-      <div class="notification is-info">
-        <p class="notice"><%= notice %></p>
-      </div>
-    <% end %>
-
-    <% if flash[:alert] %>
-      <div class="notification is-danger">
-        <p class="alert"><%= alert %></p>
-      </div>
-    <% end %>
-
-
-    <nav class="navbar is-warning">
-      <div class="navbar-brand">
-        <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-4" style="font-family: 'Itim', cursive;">Babyry</h1>
-        <%end%>
-
-
-          <!-- ハンバーガーメニュー -->
-          <!-- <div id="sp-menu">
-            <h2>MENU</h2>
-              <ul>
-                <%# if user_signed_in? %>
-                  <li><a href="#"><#%= link_to "投稿一覧", babies_path %></a></li>
-                  <li><a href="#"><%#= link_to "新規投稿", new_baby_path %></a></li>
-                <% #else %>
-                  <li><a href="#"><%#= link_to "Babyryって？", about_path %></a></li>
-                  <li><a href="#"><%#= link_to "投稿一覧", babies_path %></a></li>
-                <%# end %>
-                  <li><a href="#"><%#= link_to "ユーザー一覧", users_path %></a></li>
-                  <li><a href="#"><%#= link_to "ログイン", new_user_session_path %></a></li>
-                  <li><a href="#"><%#= link_to "新規登録", new_user_registration_path, method: :delete %></a></li>
-              </ul>
-          </div>
-          <div id="navbar-burger" data-target="navbarExampleTransparentExample">
-            <a class="menu-trigger" href="#">
-              <span></span>
-              <span></span>
-              <span></span>
-            </a>
-          </div> -->
-          <!-- ハンバーガーメニュー -->
-
-
-    <div id="header">
-    <nav>
-    <ul id="navi">
-      <li><h2>MENU</h2></li>
-      <% if user_signed_in? %>
-        <li><a href="#"><%= link_to "新規投稿", new_baby_path %></a></li>
-        <li><a href="#"><%= link_to "マイページ", user_path(current_user) %></a></li>
-        <li><a href="#"><%= link_to "フォロー投稿一覧", follow_index_path(current_user) %></a></li>
-        <li><a href="#"><%= link_to "すべてのユーザー一覧", users_path %></a></li>
-        <li><a href="#"><%= link_to "すべての投稿一覧", babies_path %></a></li>
-        <li><a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a></li>
-      <% else %>
-        <li><a href="#"><%= link_to "Babyryって？", about_path %></a></li>
-        <li><a href="#"><%= link_to "投稿一覧", babies_path %></a></li>
-        <li><a href="#"><%= link_to "ユーザー一覧", users_path %></a></li>
-        <li><a href="#"><%= link_to "ログイン", new_user_session_path %></a></li>
-        <li><a href="#"><%= link_to "新規登録", new_user_registration_path %></a></li>
-      <% end %>
-    </ul>
-    </nav>
-    
-    <!-- ボタン部分ここを後で追加するだけ-->
-    <div class="nav_btn" id="nav_btn">
-      <span class="hamburger_line hamburger_line1"></span>
-      <span class="hamburger_line hamburger_line2"></span>
-      <span class="hamburger_line hamburger_line3"></span>
-    </div>
-    <div class="nav_bg" id="nav_bg"></div>
-    <!-- /ボタン部分ここを後で追加するだけ-->
-      
-  </div>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 
 
-          <% if user_signed_in? %>
-            <div id="navbarExampleTransparentExample" class="navbar-menu">
-              <div class="navbar-item">
-                <%= link_to "新規投稿", new_baby_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "フォロー投稿一覧", follow_index_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-              </div>
-                <div class="navbar-item">
-                      <%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                    </div>
-                    <div class="navbar-item">
-                      <%= link_to "全投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-                    </div>
-                    <div class="navbar-item">
-                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                    </div>
-                  </div>
+        <title>Babyry</title>
+            <%= csrf_meta_tags %>
+            <%= csp_meta_tag %>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" href="css/style.scss" media="all" />
+                <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+            <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        </head>
 
-          <% else %>
-            <div id="navbarExampleTransparentExample" class="navbar-menu">
-              <div class="navbar-item">
-                <%= link_to "Babyryって？", about_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-              </div>
-              <div class="navbar-item">
-                <%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
-              </div>
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <div class="field is-grouped">
-                    <p class="control">
-                      <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                    </p>
-                    <p class="control">
-                      <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
-                    </p>
-                  </div>
+
+
+        <body>
+            <% if flash[:notice] %>
+                <div class="notification is-info">
+                    <p class="notice"><%= notice %></p>
                 </div>
+            <% end %>
+
+
+            <% if flash[:alert] %>
+                <div class="notification is-danger">
+                    <p class="alert"><%= alert %></p>
                 </div>
-              </div>
-            </div>
-      <% end %>
-    </nav>
+            <% end %>
 
-    <%= yield %>
 
-  </body>
+
+            <nav class="navbar is-warning">
+                <div class="navbar-brand">
+                    <%= link_to root_path, class: "navbar-item" do %>
+                        <h1 class="title is-4" style="font-family: 'Itim', cursive;">Babyry</h1>
+                    <%end%>
+
+
+                    <div id="header">
+                        <nav>
+                            <ul id="navi">
+                                <center><br>
+                                    <li><h2>〜  MENU  〜</h2></li><br><br><br>
+
+                                        <% if user_signed_in? %>
+                                            <li><a href="#"><%= link_to "新規投稿", new_baby_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "マイページ", user_path(current_user) %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "フォロー投稿一覧", follow_index_path(current_user) %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "ユーザー一覧", users_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "全投稿一覧", babies_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a></li><br><br>
+                                        <% else %>
+                                            <li><a href="#"><%= link_to "Babyryって？", about_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "投稿一覧", babies_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "ユーザー一覧", users_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "ログイン", new_user_session_path %></a></li><br><br>
+
+                                            <li><a href="#"><%= link_to "新規登録", new_user_registration_path %></a></li><br><br>
+                                        <% end %>
+
+                                </center>
+                            </ul>
+                        </nav>
+
+
+                            <div class="nav_btn" id="nav_btn">
+                                <span class="hamburger_line hamburger_line1"></span>
+
+                                <span class="hamburger_line hamburger_line2"></span>
+
+                                <span class="hamburger_line hamburger_line3"></span>
+                            </div>
+                        <div class="nav_bg" id="nav_bg"></div>
+                    </div>
+
+
+
+                    <% if user_signed_in? %>
+                        <div id="navbarExampleTransparentExample" class="navbar-menu">
+                            <div class="navbar-item">
+                                <%= link_to "新規投稿", new_baby_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "フォロー投稿一覧", follow_index_path(current_user), data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                            </div>
+                        </div>
+
+                    <% else %>
+                        <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+                            <div class="navbar-item">
+                                <%= link_to "Babyryって？", about_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "投稿一覧", babies_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-item">
+                                <%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false}, class: "navbar-item button is-warning is-light" %>
+                            </div>
+
+                            <div class="navbar-end">
+                                <div class="navbar-item">
+                                    <div class="field is-grouped">
+
+                                        <p class="control">
+                                            <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                                        </p>
+
+                                        <p class="control">
+                                            <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}, class: "button is-warning is-light" %>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </nav>
+
+
+        <%= yield %>
+
+
+    </body>
 </html>

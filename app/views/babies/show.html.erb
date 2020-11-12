@@ -79,45 +79,41 @@
 					<p class="panel-heading">
 						コメント一覧
 					</p>
+
 					<% @comments.each do |comment| %>
+
 						<div class="panel-block">
-							<p class="control">
+							<div class="media-left">
 								<%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
 									<%= attachment_image_tag comment.user, :profile_image, fallback: "no-image.png", size: "50x50" %>
-									<%= comment.user.username %>
+									<%= comment.user.username %><br>
 								<% end %>
-							</p>
+								<time><%= comment.updated_at.strftime("%m/%d %H:%M") %></time>
+							</div>
+
 							<p class="control">
 								<%= comment.comment %>
 							</p>
-							<% if current_user == comment.user %>
-								<%= link_to '削除', baby_comment_path(@baby, comment), class: 'button is-danger', method: :delete, size: "20x20" %>
-							<% end %><br>
-
-							<!-- <div class="media-right">
-								<time><%#= comment.updated_at.strftime("%m/%d %H:%M") %></time>
-							</div> -->
-
+							<div class="media-right">
+								<% if current_user == comment.user %>
+									<%= link_to '削除', baby_comment_path(@baby, comment), class: 'button is-danger', method: :delete, size: "20x20" %>
+								<% end %><br>
+							</div>
 						</div>
 					<% end %>
 
+					<div class="media-left">
+						<%= form_for [@baby, @comment] do |f| %>
+							<div class="panel-block">
+								<div class="field">
+									<%= f.label :comment, "コメントを書く", class: "label" %>
+									<%= f.text_area :comment, class: "input" %>
+									<%= f.submit '送信', class: "button is-primary" %>
+								</div>
+							</div>
+						<% end %>
+					</div>
 
-					<div class="media">
-						<div class="media-right">
-							<div class="panel-block">
-							<p class="control">
-							コメントを書く</p>
-						</div>
-							<div class="panel-block">
-							<p class="control">
-							<%= form_for [@baby, @comment] do |f| %>
-								<%= f.text_area :comment %><br>
-								<%= f.submit '送信', class: "button is-primary" %><br>
-							<% end %>
-						</p>
-					</div>
-						</div>
-					</div>
 				</article>
 			</div>
 		</div>
