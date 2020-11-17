@@ -24,10 +24,14 @@ class BabiesController < ApplicationController
   end
 
   def create
-  	@baby = Baby.new(baby_params)
-  	@baby.user_id = current_user.id
-  	if @baby.save
-      redirect_to baby_path(@baby), notice: '投稿に成功しました。'
+  	baby = Baby.new(baby_params)
+  	baby.user_id = current_user.id
+  	if baby.save
+      tags = Vision.get_image_data(baby.image)#AI追加
+      tags.each do |tag|                      #AI追加
+        baby.tags.create(name: tag)           #AI追加
+      end
+      redirect_to baby_path(baby), notice: '投稿に成功しました。'
     else
       render :new
     end
@@ -41,9 +45,14 @@ class BabiesController < ApplicationController
   end
 
   def update
-    @baby = Baby.find(params[:id])
-    if @baby.update(baby_params)
-      redirect_to baby_path(@baby), notice: '投稿を更新しました。'
+    baby = Baby.find(params[:id])
+    if baby.update(baby_params)
+      baby.tags.destroy_all
+      tags = Vision.get_image_data(baby.image)#AI追加
+      tags.each do |tag|                      #AI追加
+        baby.tags.create(name: tag)           #AI追加
+      end
+      redirect_to baby_path(baby), notice: '投稿を更新しました。'
     else
       render :edit
     end

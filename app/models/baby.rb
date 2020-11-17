@@ -5,6 +5,9 @@ class Baby < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
+	#AI
+	has_many :tags, dependent: :destroy
+
 	attachment :image
 
 	with_options presence: true do

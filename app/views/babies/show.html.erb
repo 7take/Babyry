@@ -20,6 +20,13 @@
 						</figure>
 					</div>
 
+					<!-- AI -->
+						<div class="tag-box">
+							<% @baby.tags.each do |tag| %>
+							  <span class="label"><%= tag.name %></span>
+							<% end %>
+						</div>
+
 
 					<div class="card-content">
 						<div class="media">

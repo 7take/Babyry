@@ -31,9 +31,15 @@
 										<% end %>
 									</figure>
 								</div>
+
 								<div class="media-content">
 									<div class="title"><%= link_to baby.user.username, user_path(baby.user.id) %></div>
 								</div>
+								<!-- AI -->
+								      <% baby.tags.each do |tag| %>
+								        <span class="label"><%= tag.name %></span>
+								      <% end %>
+								<!-- AI -->
 							</div>
 							<% if current_user %>
 
