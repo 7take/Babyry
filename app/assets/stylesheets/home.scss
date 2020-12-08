@@ -2,32 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// 大きな背景画像 //
-.big-bg {
-	background-size: cover;
-	background-potision: center top;
-	background-repeat: no-repeat;
-}
-
-#hom {
-	background-image: url(home_baby.jpg);
-	min-height: 100vh;
-}
-
-#home .page-title {
-	text-transform: none;
-}
-
-
-.p {
-	font-size: 100px;
-	font-family: 'Itim', cursive;
-}
-
-
-
-
-
 
 .main-visual {
   width: 100%;
@@ -59,5 +33,5 @@
 }
 
 .home_container{
-  height: 900px; /* ここの高さはいくつでも構いません */
+ height: 900px; /* ここの高さはいくつでも構いません */
 }

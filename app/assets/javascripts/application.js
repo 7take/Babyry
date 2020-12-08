@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require jquery
 //= require_tree .
 
@@ -47,7 +47,7 @@ function toggleNav() {
 
 
 
-
+/*
 $(document).on('turbolinks:load', function() {
   // オプションを指定してSkipprの実行
   $(".theTarget").skippr({
@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function() {
   });
   toggleNav();
 
-  
+
 });
 
-
+*/
