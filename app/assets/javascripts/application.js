@@ -47,8 +47,7 @@ function toggleNav() {
 
 
 
-/*
-$(document).on('turbolinks:load', function() {
+$(function(){
   // オプションを指定してSkipprの実行
   $(".theTarget").skippr({
     // スライドショーの変化（"fade" or "slide"）
@@ -77,4 +76,3 @@ $(document).on('turbolinks:load', function() {
 
 });
 
-*/
