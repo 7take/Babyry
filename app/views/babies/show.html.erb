@@ -87,30 +87,13 @@
 						コメント一覧
 					</p>
 
-					<% @comments.each do |comment| %>
-
-						<div class="panel-block">
-							<div class="media-left">
-								<%= link_to user_path(comment.user), class: "user_#{comment.user.id}" do %>
-									<%= attachment_image_tag comment.user, :profile_image, fallback: "no-image.png", size: "50x50" %>
-									<%= comment.user.username %><br>
-								<% end %>
-								<time><%= comment.updated_at.strftime("%m/%d %H:%M") %></time>
-							</div>
-
-							<p class="control">
-								<%= comment.comment %>
-							</p>
-							<div class="media-right">
-								<% if current_user == comment.user %>
-									<%= link_to '削除', baby_comment_path(@baby, comment), class: 'button is-danger', method: :delete, size: "20x20" %>
-								<% end %><br>
-							</div>
-						</div>
-					<% end %>
-
+<!-- コメント機能非同期通信 -->
+					<div id="comment-<%= @baby.id %>">
+            			<%= render partial: 'comments/comment', locals: { baby: @baby, comments: @comments} %>
+          			</div>
+<!-- コメント機能非同期通信 -->
 					<div class="media-left">
-						<%= form_for [@baby, @comment] do |f| %>
+						<%= form_for [@baby, @comment], remote: true do |f| %>
 							<div class="panel-block">
 								<div class="field">
 									<%= f.label :comment, "コメントを書く", class: "label" %>

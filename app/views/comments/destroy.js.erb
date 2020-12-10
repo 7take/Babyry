@@ -1,0 +1,1 @@
+$('#comment-<%= @baby.id %>').html("<%= j(render partial: 'comments/comment', locals: {baby: @baby, comments: @baby.comments}) %>");

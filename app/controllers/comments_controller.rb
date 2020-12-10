@@ -4,20 +4,21 @@ class CommentsController < ApplicationController
 
 	def create
 		@baby = Baby.find(params[:baby_id])
-		@comment = current_user.comments.new(comment_params)
-		@comment.baby_id = @baby.id
+		#投稿に紐づいたコメントを作成
+		@comment = @baby.comments.new(comment_params)
+		@comment.user_id = current_user.id
 	if @comment.save
 		flash[:success] = "Comment was successfully created."
 	end
-		redirect_to request.referer
+		# redirect_to request.referer
 	end
 
 
 	def destroy
 		@baby = Baby.find(params[:baby_id])
-		comment = current_user.comments.find_by(id: params[:id], baby_id: @baby.id)
-		comment.destroy
-		redirect_to request.referer
+		@comment = current_user.comments.find_by(id: params[:id], baby_id: @baby.id)
+		@comment.destroy
+		# redirect_to request.referer
 	end
 
 
