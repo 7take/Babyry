@@ -87,13 +87,14 @@
 						コメント一覧
 					</p>
 
-<!-- コメント機能非同期通信 -->
+				<!-- コメント機能非同期通信 -->
 					<div id="comment-<%= @baby.id %>">
             			<%= render partial: 'comments/comment', locals: { baby: @baby, comments: @comments} %>
           			</div>
-<!-- コメント機能非同期通信 -->
+				<!-- コメント機能非同期通信 -->
 					<div class="media-left">
-						<%= form_for [@baby, @comment], remote: true do |f| %>
+						<%#= form_for [@baby, @comment], remote: true do |f| %>
+						<%= form_with model: [@baby, @comment] do |f| %>
 							<div class="panel-block">
 								<div class="field">
 									<%= f.label :comment, "コメントを書く", class: "label" %>

@@ -43,22 +43,22 @@ class BabiesController < ApplicationController
   end
 
   def update
-    baby = Baby.find(params[:id])
-    if baby.update(baby_params)
-      baby.tags.destroy_all
-      tags = Vision.get_image_data(baby.image)#AI追加
+    @baby = Baby.find(params[:id])
+    if @baby.update(baby_params)
+      @baby.tags.destroy_all
+      tags = Vision.get_image_data(@baby.image)#AI追加
       tags.each do |tag|                      #AI追加
-        baby.tags.create(name: tag)           #AI追加
+        @baby.tags.create(name: tag)           #AI追加
       end
-      redirect_to baby_path(baby), notice: '投稿を更新しました。'
+      redirect_to baby_path(@baby), notice: '投稿を更新しました。'
     else
       render :edit
     end
   end
 
   def destroy
-    baby = Baby.find(params[:id])
-    baby.destroy
+    @baby = Baby.find(params[:id])
+    @baby.destroy
     redirect_to babies_path
   end
 
